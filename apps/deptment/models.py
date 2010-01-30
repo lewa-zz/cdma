@@ -19,7 +19,7 @@ class Deptment(models.Model):
      
 # 员工信息
 class Employee(models.Model):
-    id = models.AutoField(primary_key = True)
+    #id = models.AutoField(primary_key = True)
     name = models.CharField('姓名',max_length = 20)
     slug = models.SlugField('简写',blank=True)
     position = models.CharField('职位',max_length = 20,blank=True)

@@ -1,6 +1,7 @@
 #coding=utf-8
 
 from apps.dailywork.models import *
+from apps.deptment.models import *
 from django.contrib import admin
 import datetime
 
