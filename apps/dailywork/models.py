@@ -1,4 +1,6 @@
 #coding=utf-8
+## TODO: 派工人员统计末完成
+
 from django.db import models
 from datetime import datetime
 
@@ -29,16 +31,27 @@ class DailyWork(models.Model):
     car         = models.ForeignKey(Car,verbose_name = '车辆',blank=True,null=True,help_text='派出的车辆')
     overtime    = models.IntegerField('超时加班数',default = 0)
     other       = models.TextField('其他',blank=True,null=True)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+    status      = models.CharField('状态',max_length=1, choices=STATUS_CHOICES)
 
     def __unicode__(self):
-        return "ok"
+        return "DailyWork.workingdate"
 
-#计算派工单出勤人数
+    #计算派工单出勤人数
     def how_many_people(self):
-        return self.pub_date.date() == datetime.date.today()
+        detail = self.dailyworkitem_set.all()
+        return detail.count()
     how_many_people.short_description = u'人数'
-
+    
+    #把派工明细人员名字列成一串字符以备显示
+    def peoples_names(self):
+        t=""
+        details = self.dailyworkitem_set.all()         
+        for i,po in enumerate(details):
+            print po.name
+            t +=i+" "+po.name+" "
+        return details[1].name
+    peoples_names.short_description = u'出勤人员'     
+    
     class Meta:
         verbose_name = u'派工单'
         verbose_name_plural = u'派工单'
@@ -51,12 +64,12 @@ class DailyWorkItem(models.Model):
                     blank=True,null=True,help_text='人员所担任的角色')
 
     def __unicode__(self):
-        return employee;
+        return self.employee.name
         #if employee is null return ""
 
 
 #计算派工单出勤人数
-#    def peopleamo():
+   # def peopleamo(self):
 
     class Meta:
         unique_together = ("dailywork",  "employee")

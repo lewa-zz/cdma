@@ -139,10 +139,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.messages',
+    'cdma.apps.deptment',
     'cdma.apps.project',
     'cdma.apps.car',
     'cdma.apps.dailywork',
-    'cdma.apps.deptment',
     'cdma.apps.station',
     'apps.demomenu',
 )
