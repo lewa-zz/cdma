@@ -37,5 +37,5 @@ class DailyWorkAdmin(admin.ModelAdmin):
      #   self.message_user(request, u"成功发布%s 。" % message_bit)
     make_published.short_description = u"发布已选择的派工单"
     actions = [make_published]
- 
+
 admin.site.register(DailyWork, DailyWorkAdmin)

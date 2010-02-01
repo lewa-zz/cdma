@@ -41,17 +41,16 @@ class DailyWork(models.Model):
         detail = self.dailyworkitem_set.all()
         return detail.count()
     how_many_people.short_description = u'人数'
-    
+
     #把派工明细人员名字列成一串字符以备显示
     def peoples_names(self):
         t=""
-        details = self.dailyworkitem_set.all()         
-        for i,po in enumerate(details):
-            print po.name
-            t +=i+" "+po.name+" "
-        return details[1].name
-    peoples_names.short_description = u'出勤人员'     
-    
+        details = self.dailyworkitem_set.all()
+        for po in details:
+            t += str(po)+" "
+        return t
+    peoples_names.short_description = u'出勤人员'
+
     class Meta:
         verbose_name = u'派工单'
         verbose_name_plural = u'派工单'
@@ -65,8 +64,6 @@ class DailyWorkItem(models.Model):
 
     def __unicode__(self):
         return self.employee.name
-        #if employee is null return ""
-
 
 #计算派工单出勤人数
    # def peopleamo(self):

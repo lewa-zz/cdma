@@ -6,17 +6,17 @@ from django.db import models
 class Deptment(models.Model):
     name = models.CharField('部门',max_length = 30)
     slug = models.SlugField(verbose_name='简写',max_length = 20,blank=True)
-    
+
     class Meta:
         verbose_name = u'部门'
         verbose_name_plural = u'部门'
-    
+
     def __unicode__(self):
         return self.name
-        
-        
-    
-     
+
+
+
+
 # 员工信息
 class Employee(models.Model):
     #id = models.AutoField(primary_key = True)
