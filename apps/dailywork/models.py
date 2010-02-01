@@ -65,9 +65,6 @@ class DailyWorkItem(models.Model):
     def __unicode__(self):
         return self.employee.name
 
-#计算派工单出勤人数
-   # def peopleamo(self):
-
     class Meta:
         unique_together = ("dailywork",  "employee")
         verbose_name = u'派出人员明细'

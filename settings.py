@@ -145,4 +145,5 @@ INSTALLED_APPS = (
     'cdma.apps.dailywork',
     'cdma.apps.station',
     'apps.demomenu',
+    'django.contrib.databrowse',
 )

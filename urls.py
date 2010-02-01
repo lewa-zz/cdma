@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.contrib import databrowse
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -14,5 +15,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-
+    (r'^databrowse/(.*)', databrowse.site.root),
+    #(r'^(?i)dailywork/',include('cdma.apps.urls')),
 )
