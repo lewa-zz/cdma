@@ -8,6 +8,8 @@ from apps.project.models import *
 from apps.deptment.models import *
 from apps.car.models import *
 
+from django.contrib import databrowse
+
 WORKINGROLE_CHOISES=(
         (u'领队',u'领队'),
         (u'安全员',u'安全员'),
@@ -69,3 +71,6 @@ class DailyWorkItem(models.Model):
         unique_together = ("dailywork",  "employee")
         verbose_name = u'派出人员明细'
         verbose_name_plural = u'派出人员明细'
+
+
+#databrowse.site.register(DailyWork)
